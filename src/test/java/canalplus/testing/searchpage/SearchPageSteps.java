@@ -3,6 +3,7 @@ package canalplus.testing.searchpage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class SearchPageSteps {
 
@@ -26,5 +27,15 @@ public class SearchPageSteps {
     @And("^I enter \"([^\"]*)\" in search input$")
     public void enterInSearch(String key){
         searchResultPage.sendKeys(SearchPageElements.searchInput, key);
+    }
+
+    @Then("^Movie is found \"([^\"]*)\"$")
+    public void findMovie(String title) {
+        try {
+            this.searchResultPage.getDriver().findElement(By.xpath(SearchPageElements.film + title + "']"));
+        }
+        catch (Exception e) {
+            System.out.println("Test Failed");
+        }
     }
 }

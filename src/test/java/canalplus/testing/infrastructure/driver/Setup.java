@@ -18,7 +18,7 @@ public class Setup {
         }
         switch (browser) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver","C:\\Users\\Jan\\Desktop\\python_testing\\canal-plus-testing\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver","D:\\studia\\3rok\\TO\\chromedriver.exe");
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("['start-maximized']");
                 driver = new ChromeDriver(chromeOptions);
