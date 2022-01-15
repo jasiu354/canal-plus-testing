@@ -21,7 +21,12 @@ public class HomePageSteps {
 
     @And("^I click on accept button$")
     public void clickOn() {
-        homePage.clickOn(HomePageElements.agreementAcceptButton);
+        try {
+            homePage.clickOn(HomePageElements.agreementAcceptButton);
+        }
+        catch (Exception ignored){
+
+        }
     }
 
     @And("^I wait for \"([^\"]*)\" seconds$")

@@ -33,9 +33,11 @@ public class SearchPageSteps {
     public void findMovie(String title) {
         try {
             this.searchResultPage.getDriver().findElement(By.xpath(SearchPageElements.film + title + "']"));
+            this.searchResultPage.getDriver().close();
         }
         catch (Exception e) {
             System.out.println("Test Failed");
+            this.searchResultPage.getDriver().close();
         }
     }
 }
