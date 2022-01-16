@@ -6,6 +6,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"src/test/resources/canalplus/testing/Search.feature"},
-        strict = false, plugin = {"pretty"}, tags = {"@correct_titles"})
+        strict = false, plugin = {"pretty"}, tags = {"@spaces", "@doubled"})
 public class SearchTest {
 }

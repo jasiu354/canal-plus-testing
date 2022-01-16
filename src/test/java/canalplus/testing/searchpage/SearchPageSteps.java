@@ -38,6 +38,7 @@ public class SearchPageSteps {
         catch (Exception e) {
             System.out.println("Test Failed");
             this.searchResultPage.getDriver().close();
+            assert false;
         }
     }
 }
