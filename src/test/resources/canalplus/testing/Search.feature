@@ -2,34 +2,35 @@ Feature: Search
 
 
   @searchTest @correctTitles
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - correctTitles
     Given A user navigates to HomePage
+    And I wait for "2" seconds
     And I click on accept button
     And I wait for "2" seconds
     And I click on search icon
     And I enter "<title>" in search input
-    And I wait for "5" seconds
+    And I wait for "8" seconds
     Then Movie is found "<correct_title>"
 
     Examples:
       | title | correct_title |
       | Przed północą | Przed północą |
       | Ciche miejsce 2 | Ciche miejsce 2 |
-      | Oficer i szpieg | Oficer i szpieg |
+      | The Office | The Office |
       | 1800 Gramów | 1800 Gramów |
-      | Miasto Szpiegów | Miasto Szpiegów |
       | Sceny z życia małżeńskiego | Sceny z życia małżeńskiego |
       | Misja w High Ground | Misja w High Ground |
 
 
   @searchTest @spaces @doubled
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - doubledSpaces
     Given A user navigates to HomePage
+    And I wait for "2" seconds
     And I click on accept button
     And I wait for "2" seconds
     And I click on search icon
     And I enter "<title>" in search input
-    And I wait for "15" seconds
+    And I wait for "8" seconds
     Then Movie is found "<correct_title>"
 
     Examples:
@@ -38,23 +39,19 @@ Feature: Search
       | Ciche  miejsce 2 | Ciche miejsce 2 |
       | Ciche miejsce  2 | Ciche miejsce 2 |
       | Ciche  miejsce  2 | Ciche miejsce 2 |
-      | Oficer  i szpieg | Oficer i szpieg |
-      | Oficer i  szpieg | Oficer i szpieg |
-      | Oficer  i  szpieg | Oficer i szpieg |
+      | The  Office | The Office |
       | 1800  Gramów | 1800 Gramów |
-      | Miasto  Szpiegów | Miasto Szpiegów |
       | Sceny  z życia małżeńskiego | Sceny z życia małżeńskiego |
       | Sceny z  życia małżeńskiego | Sceny z życia małżeńskiego |
       | Sceny z życia  małżeńskiego | Sceny z życia małżeńskiego |
       | Sceny  z  życia  małżeńskiego | Sceny z życia małżeńskiego |
       | Misja  w High Ground | Misja w High Ground |
-      | Misja w  High Ground | Misja w High Ground |
       | Misja w High  Ground | Misja w High Ground |
       | Misja  w  High Ground | Misja w High Ground |
 
 
   @searchTest @spaces @missing
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - missing spaces
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -73,7 +70,6 @@ Feature: Search
       | Oficer iszpieg | Oficer i szpieg |
       | Oficeriszpieg | Oficer i szpieg |
       | 1800Gramów | 1800 Gramów |
-      | MiastoSzpiegów | Miasto Szpiegów |
       | Scenyz życia małżeńskiego | Sceny z życia małżeńskiego |
       | Sceny zżycia małżeńskiego | Sceny z życia małżeńskiego |
       | Sceny z życiamałżeńskiego | Sceny z życia małżeńskiego |
@@ -89,7 +85,7 @@ Feature: Search
 
 
   @searchTest @polishChars @missing
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - missing polish chars
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -115,7 +111,7 @@ Feature: Search
 
 
   @searchTest @polishChars @additional
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - additional polish chars
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -131,13 +127,12 @@ Feature: Search
       | Cichę miejsce 2 | Ciche miejsce 2 |
       | Oficer i szpieg | Oficer i szpieg |
       | 1800 Grąmów | 1800 Gramów |
-      | Miastó Szpiegów | Miasto Szpiegów |
       | Sceny z życią małżeńskiego | Sceny z życia małżeńskiego |
       | Misją w High Ground | Misja w High Ground |
 
 
   @searchTest @missingLetters @firstWord
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - first word missing
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -152,13 +147,12 @@ Feature: Search
       | miejsce 2 | Ciche miejsce 2 |
       | i szpieg | Oficer i szpieg |
       | Gramów | 1800 Gramów |
-      | Szpiegów | Miasto Szpiegów |
       | z życia małżeńskiego | Sceny z życia małżeńskiego |
       | w High Ground | Misja w High Ground |
 
 
   @searchTest @missingLetters @lastWord
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - last word missing
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -173,13 +167,12 @@ Feature: Search
       | Ciche miejsce | Ciche miejsce 2 |
       | Oficer i | Oficer i szpieg |
       | 1800 | 1800 Gramów |
-      | Miasto | Miasto Szpiegów |
       | Sceny z życia | Sceny z życia małżeńskiego |
       | Misja w High | Misja w High Ground |
 
 
   @searchTest @missingLetters @randomLetter
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - random letter missing
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -200,8 +193,6 @@ Feature: Search
       | Oficer i zpieg | Oficer i szpieg |
       | 180 Gramów | 1800 Gramów |
       | 1800 Gamów | 1800 Gramów |
-      | Miato Szpiegów | Miasto Szpiegów |
-      | Sceny z życia małżeńskiego | Sceny z życia małżeńskiego |
       | Sceny życia małżeńskiego | Sceny z życia małżeńskiego |
       | Sceny z życia ałżeńskiego | Sceny z życia małżeńskiego |
       | Misja High Ground | Misja w High Ground |
@@ -209,7 +200,7 @@ Feature: Search
 
 
   @searchTest @missingLetters @lastLetter
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - last letter missing
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -224,13 +215,12 @@ Feature: Search
       | Ciche miejsce | Ciche miejsce 2 |
       | Oficer i szpie | Oficer i szpieg |
       | 1800 Gramó | 1800 Gramów |
-      | Miasto Szpiegó | Miasto Szpiegów |
       | Sceny z życia małżeńskieg | Sceny z życia małżeńskiego |
       | Misja w High Groun | Misja w High Ground |
 
 
   @searchTest @missingLetters @lastLetter2
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - 2 last letters missing
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -245,13 +235,12 @@ Feature: Search
       | Ciche miejsc | Ciche miejsce 2 |
       | Oficer i szpi | Oficer i szpieg |
       | 1800 Gram | 1800 Gramów |
-      | Miasto Szpieg | Miasto Szpiegów |
       | Sceny z życia małżeńskie | Sceny z życia małżeńskiego |
       | Misja w High Grou | Misja w High Ground |
 
 
   @searchTest @missingLetters @lastLetterEachWord
-  Scenario Outline: Search with different inputs
+  Scenario Outline: Search with different inputs - last letter of each word missing
     Given A user navigates to HomePage
     And I click on accept button
     And I wait for "2" seconds
@@ -266,6 +255,5 @@ Feature: Search
       | Cich miejsc 2 | Ciche miejsce 2 |
       | Ofice i szpie | Oficer i szpieg |
       | 180 Gramó | 1800 Gramów |
-      | Miast Szpiegó | Miasto Szpiegów |
       | Scen z życi małżeńskieg | Sceny z życia małżeńskiego |
       | Misj w Hig Groun | Misja w High Ground |

@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = {"src/test/resources/canalplus/testing/Search.feature"},
         plugin = {"pretty"},
         glue = {"canalplus.testing.homepage", "canalplus.testing.infrastructure.driver", "canalplus.testing.searchpage"},
-        tags = {"@correct_titles"})
+        tags = {"@missingLetters", "@lastLetterEachWord"})
 public class SearchTest {
 }

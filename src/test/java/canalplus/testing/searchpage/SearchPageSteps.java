@@ -1,5 +1,6 @@
 package canalplus.testing.searchpage;
 
+import canalplus.testing.infrastructure.driver.Wait;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -9,8 +10,11 @@ public class SearchPageSteps {
 
     private SearchPage searchResultPage;
 
+    protected Wait wait;
+
     public SearchPageSteps() {
         this.searchResultPage = new SearchPage();
+        this.wait = new Wait(this.searchResultPage.getDriver());
     }
 
     @Then("^\"([^\"]*)\" is displayed in the first \"([^\"]*)\" results$")
@@ -31,14 +35,7 @@ public class SearchPageSteps {
 
     @Then("^Movie is found \"([^\"]*)\"$")
     public void findMovie(String title) {
-        try {
-            this.searchResultPage.getDriver().findElement(By.xpath(SearchPageElements.film + title + "']"));
-            this.searchResultPage.getDriver().close();
-        }
-        catch (Exception e) {
-            System.out.println("Test Failed");
-            this.searchResultPage.getDriver().close();
-            assert false;
-        }
+        wait.forElementToBeDisplayed(20, searchResultPage.getDriver().findElement(By.xpath(SearchPageElements.film + title + "']")), "Film");
+        searchResultPage.getDriver().close();
     }
 }
